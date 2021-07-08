@@ -1,0 +1,35 @@
+
+	1.授权码模式	GET + POST 		有 access_token 和 refresh_token
+		获取授权码 -> 授权码换取token -> 请求保护资源
+	// 授权码
+	http://localhost:9010/oauth/authorize?client_id=client_id&response_type=code&redirect_uri=https://www.baidu.com&state=xzy
+	// token
+	http://client_id:mysecret@localhost:9010/oauth/token
+		grant_type=authorization_code&code=psDwZd&redirect_uri=https://www.baidu.com
+		(客户端id和密钥可以拿到请求体中来，但是需要在代码中开启表单授权 重写configure(AuthorizationServerSecurityConfigurer security) 这个方法开启)
+		表单授权	http://localhost:9010/oauth/token
+					grant_type=authorization_code&code=psDwZd&redirect_uri=https://www.baidu.com&client_id=client_id&client_secret=mysecret
+	// 访问保护资源
+		资源url?access_token=token
+		或者
+		请求头加 Authorization = Bearer token
+
+	2. 简单模式 GET 	只有 access_token
+		授权页面 -> 确认授权时,直接将token相关信息拼接在回调url上面
+		http://localhost:9010/oauth/authorize?client_id=client_id&response_type=token&redirect_uri=https://www.baidu.com&state=xzy
+
+
+
+	3. 密码模式	POST 	有 access_token 和 refresh_token
+		(和授权码换取token一样，可以将client_id和client_secret放到body中)
+		http://client_id:mysecret@localhost:9010/oauth/token
+			grant_type=password&username=admin&password=111111
+
+		token 直接作为返回值
+
+	4.客户端模式		POST 	只有 access_token
+		(和授权码换取token一样，可以将client_id和client_secret放到body中)
+		http://client_id:mysecret@localhost:9010/oauth/token
+				grant_type=client_credentials
+
+		token 直接返回

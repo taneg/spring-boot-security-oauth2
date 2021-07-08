@@ -17,11 +17,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //         放行token检查的请求
         web.ignoring().antMatchers("/oauth/check_token");
     }
-//    @Override
-//    @Bean
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
+
+    /**
+     * 密码模式需配置该项
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

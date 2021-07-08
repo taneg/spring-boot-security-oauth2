@@ -2,6 +2,7 @@ package top.kalpana.springboot.oauth2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -26,9 +27,11 @@ public class AuthorizationServerJdbcConfiguration extends AuthorizationServerCon
     @Autowired
     private TokenStore tokenStore;
     @Autowired
-    public JdbcAuthorizationCodeServices jdbcAuthorizationCodeServices;
+    private JdbcAuthorizationCodeServices jdbcAuthorizationCodeServices;
     @Autowired
     private ApprovalStore approvalStore;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     /**
      * 配置客户端信息
@@ -52,6 +55,9 @@ public class AuthorizationServerJdbcConfiguration extends AuthorizationServerCon
                 // 用户加载
                 .userDetailsService(userDetailsService)
                 // 授权记录
-                .approvalStore(approvalStore);
+                .approvalStore(approvalStore)
+                // 密码模式需要配置该项
+                .authenticationManager(authenticationManager)
+         ;
     }
 }
