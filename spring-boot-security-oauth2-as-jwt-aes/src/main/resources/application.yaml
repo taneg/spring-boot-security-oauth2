@@ -11,7 +11,7 @@ security:
       client-secret: client_secret
       scope: app,web
       authorized-grant-types: authorization_code,refresh_token,password,implicit,client_credentials
-      registered-redirect-uri: https://www.baidu.com
+      registered-redirect-uri: http://localhost:9010/callback/code
       access-token-validity-seconds: 7200
       refresh-token-validity-seconds: 720000
     authorization:
