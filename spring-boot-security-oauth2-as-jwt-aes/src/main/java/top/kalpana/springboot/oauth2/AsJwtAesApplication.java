@@ -1,14 +1,13 @@
 package top.kalpana.springboot.oauth2;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 @SpringBootApplication
-@MapperScan(basePackages = "top.kalpana.springboot.**.mapper")
-public class AsJdbcApplication {
+@EnableAuthorizationServer
+public class AsJwtAesApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AsJdbcApplication.class, args);
+        SpringApplication.run(AsJwtAesApplication.class, args);
     }
-
 }

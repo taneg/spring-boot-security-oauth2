@@ -9,4 +9,10 @@ security:
       user-authorization-uri: http://localhost:9010/oauth/authorize
       access-token-uri: http://localhost:9010/oauth/token
     resource:
+#      普通token 校验端点
       token-info-uri: http://localhost:9010/oauth/check_token
+      jwt:
+#        jwt 能拿到密钥时直接配值，对称加密此处密钥与认证服务器一致，非对称加密时此处为公钥
+#        key-value: 123
+#       uri和value的区别在于，一个密钥在本地，一个在认证服务器
+        key-uri: http://localhost:9010/oauth/token_key

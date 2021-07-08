@@ -12,6 +12,7 @@
         <module>spring-boot-security-oauth2-as-inmemory</module>
         <module>spring-boot-security-oauth2-rs-simple</module>
         <module>spring-boot-security-oauth2-as-jdbc</module>
+        <module>spring-boot-security-oauth2-as-jwt-aes</module>
     </modules>
 
     <parent>

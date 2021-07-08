@@ -1,0 +1,22 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: oauth2-as-jwt-aes
+
+security:
+  oauth2:
+    client:
+      client-id: client_id
+      client-secret: client_secret
+      scope: app,web
+      authorized-grant-types: authorization_code,refresh_token,password,implicit,client_credentials
+      registered-redirect-uri: https://www.baidu.com
+      access-token-validity-seconds: 7200
+      refresh-token-validity-seconds: 720000
+    authorization:
+      jwt:
+#        对称加密密钥 or 非对称加密私钥
+        key-value: 123
+#        如果资源服务器，使用uri获取密钥方式时，需开启以下端点，并在Security 中开放 http basic 认证
+      token-key-access: "permitAll()"
