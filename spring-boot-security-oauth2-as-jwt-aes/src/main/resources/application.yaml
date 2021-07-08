@@ -19,4 +19,5 @@ security:
 #        对称加密密钥 or 非对称加密私钥
         key-value: 123
 #        如果资源服务器，使用uri获取密钥方式时，需开启以下端点，并在Security 中开放 http basic 认证
-      token-key-access: "permitAll()"
+#      permitAll() 也可以，但最好还是认证权限
+      token-key-access: "isAuthenticated()"
