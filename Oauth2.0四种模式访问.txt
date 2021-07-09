@@ -33,3 +33,9 @@
 				grant_type=client_credentials
 
 		token 直接返回
+
+	5.刷新token
+	    普通令牌：原有令牌会失效，刷新令牌不变
+	    http://client_id:client_secret@localhost:9010/oauth/token
+	    (和授权码换取token一样，可以将client_id和client_secret放到body中)
+	        grant_type=refresh_token&refresh_token=xxxxx
